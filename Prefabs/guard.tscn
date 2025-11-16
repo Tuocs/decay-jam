@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg7afcg73nm6g"]
+[gd_scene load_steps=4 format=3 uid="uid://coqbvhfhw7mmy"]
 
 [ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_0intx"]
 [ext_resource type="Script" uid="uid://b7yxp7rxv35wn" path="res://Scripts/guard.gd" id="2_qtsra"]

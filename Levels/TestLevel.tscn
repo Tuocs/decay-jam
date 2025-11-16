@@ -1,25 +1,51 @@
-[gd_scene load_steps=8 format=4 uid="uid://c611xvguj2e7j"]
+[gd_scene load_steps=12 format=4 uid="uid://c611xvguj2e7j"]
 
 [ext_resource type="Script" uid="uid://fahp3vnmyc1w" path="res://Scripts/zombie_manager.gd" id="1_iqcmb"]
+[ext_resource type="Script" uid="uid://nmvdv5u3u4g4" path="res://Scripts/level_manager.gd" id="1_jeepb"]
+[ext_resource type="PackedScene" uid="uid://p5b0o5j45tjs" path="res://Levels/Menu.tscn" id="2_kv5fy"]
 [ext_resource type="TileSet" uid="uid://cbrabpodamhjx" path="res://Assets/new_tile_set.tres" id="2_voj1p"]
-[ext_resource type="PackedScene" uid="uid://cj1vaempqokud" path="res://Prefabs/Zombie.tscn" id="2_y1yrn"]
+[ext_resource type="PackedScene" path="res://Prefabs/Zombie.tscn" id="2_y1yrn"]
 [ext_resource type="Script" uid="uid://dhjum2objh2bk" path="res://Scripts/tile_map_layer.gd" id="3_kxr0u"]
+[ext_resource type="PackedScene" uid="uid://hwnnvne8jo3l" path="res://Prefabs/level_finish_ui.tscn" id="4_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://be2jk8a1ea588" path="res://Prefabs/Light.tscn" id="6_kxr0u"]
 [ext_resource type="PackedScene" path="res://Prefabs/guard.tscn" id="6_voj1p"]
 [ext_resource type="PackedScene" uid="uid://csia7epgxbj3q" path="res://Prefabs/pause_ui.tscn" id="7_kxr0u"]
 
-[node name="Level" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxr0u"]
+size = Vector2(55.5, 20)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("level_finish_ui")]
+script = ExtResource("1_jeepb")
+level_finish_ui = NodePath("UI/Camera2D/Level Finish UI")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 999
+follow_viewport_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="UI"]
 position = Vector2(144, 96)
 zoom = Vector2(5, 5)
 
-[node name="PauseUI" parent="Camera2D" instance=ExtResource("7_kxr0u")]
-visible = true
-offset_left = -144.0
-offset_top = -96.0
-offset_right = -144.0
-offset_bottom = -96.0
+[node name="PauseUI" parent="UI/Camera2D" instance=ExtResource("7_kxr0u")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+scale = Vector2(0.5, 0.5)
+Menu = ExtResource("2_kv5fy")
+
+[node name="Level Finish UI" parent="UI/Camera2D" instance=ExtResource("4_8x8nf")]
+visible = false
+scale = Vector2(0.5, 0.5)
+menu = ExtResource("2_kv5fy")
+
+[node name="Area2D" type="Area2D" parent="UI"]
+position = Vector2(136, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Area2D"]
+shape = SubResource("RectangleShape2D_kxr0u")
 
 [node name="GroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -70,3 +96,6 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAQAEAAEAAAABAAAAAQAEAAEAAAACAAAAAQAEAAEAAAAFAAEAAQAAAAEAAAAGAAEAAQADAAEAAAAMAAUAAQAFAAAAAAALAAUAAQAFAAEAAAAKAAsAAQAFAAEAAAAFAAIAAQAAAAEAAAAFAAMAAQAAAAEAAAAGAAQAAQADAAEAAAAFAAQAAQAAAAEAAAAJAAUAAQAFAAEAAAAKAAUAAQAEAAEAAAAGAAUAAQAFAAIAAAAFAAUAAQAAAAMAAAAAAAYAAQADAAIAAAAAAAcAAQADAAEAAAAIAAUAAQAEAAEAAAAAAAQAAQADAAAAAAAAAAUAAQADAAEAAAADAAAAAQAEAAEAAAAEAAAAAQAEAAEAAAAFAAAAAQAFAAMAAAAKAAAAAQAAAAIAAAALAAAAAQAHAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQACAAAAAAAPAAAAAQABAAAAAAAQAAAAAQACAAAAAAARAAAAAQACAAAAAAAGAAIAAQADAAIAAAAAAAsAAQAFAAIAAAAAAAoAAQADAAIAAAAAAAkAAQADAAEAAAAAAAgAAQADAAEAAAAGAAAAAQADAAAAAAALAAsAAQAFAAEAAAAMAAsAAQAEAAEAAAANAAsAAQAFAAEAAAAHAAUAAQAFAAEAAAAGAAMAAQADAAEAAAAKAAEAAQAAAAMAAAALAAEAAQABAAMAAAAMAAEAAQABAAMAAAAOAAEAAQABAAMAAAAQAAEAAQABAAMAAAARAAIAAQAAAAIAAAARAAEAAQAHAAEAAAANAAEAAQACAAMAAAAPAAEAAQACAAMAAAARAAMAAQAAAAEAAAARAAQAAQAAAAEAAAARAAYAAQAAAAEAAAARAAgAAQAAAAEAAAARAAcAAQAAAAIAAAARAAUAAQAAAAEAAAARAAkAAQAAAAEAAAARAAoAAQAAAAEAAAARAAsAAQAEAAIAAAAQAAsAAQAFAAEAAAAPAAsAAQAFAAEAAAAIAAsAAQABAAMAAAAFAAsAAQAFAAEAAAADAAsAAQAFAAEAAAABAAsAAQAFAAEAAAACAAsAAQAEAAEAAAAEAAsAAQAEAAEAAAAGAAsAAQABAAMAAAAHAAsAAQACAAMAAAAJAAsAAQAEAAEAAAAOAAsAAQAEAAEAAAAIAAoAAQADAAIAAAAGAAkAAQAAAAAAAAAGAAoAAQAAAAEAAAAIAAkAAQADAAAAAAAHAAoAAQABAAIAAAAHAAkAAQABAAAAAAA=")
 tile_set = ExtResource("2_voj1p")
 script = ExtResource("3_kxr0u")
+
+[connection signal="area_entered" from="UI/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="UI/Area2D" to="." method="_on_area_2d_body_entered"]

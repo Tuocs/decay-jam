@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://p5b0o5j45tjs"]
+
+[ext_resource type="PackedScene" uid="uid://b4lcxepryuh6s" path="res://Prefabs/main_menu_ui.tscn" id="1_vww8b"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MainMenuUI" parent="Camera2D" instance=ExtResource("1_vww8b")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

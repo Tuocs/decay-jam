@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://c611xvguj2e7j"]
+[gd_scene load_steps=7 format=4 uid="uid://c611xvguj2e7j"]
 
 [ext_resource type="Script" uid="uid://fahp3vnmyc1w" path="res://Scripts/zombie_manager.gd" id="1_iqcmb"]
-[ext_resource type="TileSet" path="res://new_tile_set.tres" id="2_voj1p"]
-[ext_resource type="PackedScene" uid="uid://dhr08xx1r06g4" path="res://Prefabs/zombie.tscn" id="2_y1yrn"]
-[ext_resource type="Script" path="res://Levels/tile_map_layer.gd" id="3_kxr0u"]
+[ext_resource type="TileSet" uid="uid://cbrabpodamhjx" path="res://Assets/new_tile_set.tres" id="2_voj1p"]
+[ext_resource type="PackedScene" path="res://Prefabs/Zombie.tscn" id="2_y1yrn"]
+[ext_resource type="Script" uid="uid://dhjum2objh2bk" path="res://Scripts/tile_map_layer.gd" id="3_kxr0u"]
 [ext_resource type="Texture2D" uid="uid://orhw3pkp7axl" path="res://Assets/prop_fade_start_50.png" id="4_2yvdw"]
+[ext_resource type="PackedScene" path="res://Prefabs/guard.tscn" id="6_voj1p"]
 
 [node name="Level" type="Node2D"]
 
@@ -40,3 +41,6 @@ scale = Vector2(1, 1)
 [node name="Zombie2" parent="ZombieManager" instance=ExtResource("2_y1yrn")]
 position = Vector2(301, 139)
 scale = Vector2(1, 1)
+
+[node name="Guard" parent="." instance=ExtResource("6_voj1p")]
+position = Vector2(200, 134)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://be2jk8a1ea588"]
+
+[ext_resource type="Texture2D" uid="uid://dteaycdh4pvt8" path="res://Assets/wall_tiles.png" id="1_nr5ea"]
+[ext_resource type="Texture2D" uid="uid://bhmvsqlplyb7e" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_tupyj"]
+[ext_resource type="Texture2D" uid="uid://b0d55fa1gldmq" path="res://Assets/light.png" id="3_8wulq"]
+
+[node name="Light" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(9, 9)
+texture = ExtResource("1_nr5ea")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shadow_enabled = true
+texture = ExtResource("2_tupyj")
+texture_scale = 0.5
+
+[node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 0
+texture = ExtResource("3_8wulq")

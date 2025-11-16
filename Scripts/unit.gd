@@ -4,7 +4,7 @@ var map
 var walking = false
 
 func _ready() -> void:
-	map = get_node("/root/Level/TileMapLayer")
+	map = get_node("/root/Level/WallsCanvasLayer/WallsTilemap")
 
 	
 func set_new_target_pos(new_pos: Vector2):

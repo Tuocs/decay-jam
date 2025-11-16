@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c611xvguj2e7j"]
+
+[ext_resource type="Script" uid="uid://fahp3vnmyc1w" path="res://Scripts/zombie_manager.gd" id="1_iqcmb"]
+[ext_resource type="PackedScene" uid="uid://dhr08xx1r06g4" path="res://Prefabs/zombie.tscn" id="2_y1yrn"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="ZombieManager" type="Node2D" parent="."]
+script = ExtResource("1_iqcmb")
+
+[node name="Zombie" parent="ZombieManager" instance=ExtResource("2_y1yrn")]
+position = Vector2(216, 201)
+
+[node name="Zombie2" parent="ZombieManager" instance=ExtResource("2_y1yrn")]
+position = Vector2(958, 124)

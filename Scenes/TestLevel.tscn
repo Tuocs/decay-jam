@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c611xvguj2e7j"]
-
-[ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Scenes/zombie.tscn" id="1_bhm8u"]
-
-[node name="Level" type="Node2D"]
-
-[node name="Zombie" parent="." instance=ExtResource("1_bhm8u")]
-position = Vector2(201, 139)

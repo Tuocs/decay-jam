@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg7afcg73nm6g"]
 
-[ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_p570l"]
-[ext_resource type="Script" uid="uid://b7yxp7rxv35wn" path="res://Scripts/guard.gd" id="2_avean"]
+[ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_0intx"]
+[ext_resource type="Script" uid="uid://b7yxp7rxv35wn" path="res://Scripts/guard.gd" id="2_qtsra"]
 
-[node name="Guard" instance=ExtResource("1_p570l")]
-script = ExtResource("2_avean")
+[node name="Guard" groups=["Guard"] instance=ExtResource("1_0intx")]
+script = ExtResource("2_qtsra")

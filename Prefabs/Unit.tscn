@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3oy3dwght1qq"]
+[gd_scene load_steps=4 format=3 uid="uid://b3oy3dwght1qq"]
 
 [ext_resource type="Script" uid="uid://cajwem5vld680" path="res://Scripts/unit.gd" id="1_ta3r2"]
 [ext_resource type="Texture2D" uid="uid://c0ggpqnqsvx6o" path="res://Assets/icon.svg" id="2_mthqy"]
 
-[node name="Unit" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta3r2"]
+size = Vector2(40, 40)
+
+[node name="Unit" type="Node2D" groups=["Unit"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ta3r2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mthqy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ta3r2")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

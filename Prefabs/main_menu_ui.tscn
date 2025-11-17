@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4lcxepryuh6s"]
+[gd_scene load_steps=2 format=3 uid="uid://b4lcxepryuh6s"]
 
 [ext_resource type="Script" uid="uid://dtscncoiq5o1k" path="res://Scripts/main_menu_ui.gd" id="1_pqv25"]
-[ext_resource type="PackedScene" uid="uid://c611xvguj2e7j" path="res://Levels/TestLevel.tscn" id="2_sq287"]
 
 [node name="MainMenuUI" type="Control"]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pqv25")
-level_1 = ExtResource("2_sq287")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(200, 300)

@@ -1,6 +1,6 @@
 extends Control
 
-#@export var Menu: PackedScene
+@export var Menu: PackedScene
 
 func _on_button_pressed() -> void:
 	visible = false

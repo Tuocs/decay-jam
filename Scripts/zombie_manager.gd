@@ -3,6 +3,7 @@ extends Node2D
 var my_group_nodes
 var selected
 var target
+@onready var zombie_scene = preload("res://Prefabs/Zombie.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,4 +37,44 @@ func _input(event):
 		selected = my_group_nodes[9]
 	if event.is_action_pressed("Order") && selected != null:
 		print(get_global_mouse_position())
-		selected.set_new_target_pos(get_global_mouse_position())
+		var collision = get_area_in_group(get_global_mouse_position(), "Guard")
+		if collision != null:
+			selected.set_new_target_pos(get_global_mouse_position())
+		else:
+			selected.set_new_target_pos(get_global_mouse_position())
+
+func add_new_zombie(_position: Vector2) -> void:
+	var new_object = zombie_scene.instantiate()
+	print("new zombie")
+	print(_position)
+	add_child(new_object)
+	new_object.position = _position
+	RefreshZombies()
+
+func is_position_in_group_area(position: Vector2, target_group: String) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = position
+	query.collide_with_areas = true # Ensure areas are considered
+	
+	var result = space_state.intersect_point(query)
+	
+	for overlap_data in result:
+		var collider = overlap_data.collider
+		if collider is Area2D and collider.is_in_group(target_group):
+			return true
+	return false
+
+func get_area_in_group(position: Vector2, target_group: String) -> Area2D:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = position
+	query.collide_with_areas = true # Ensure areas are considered
+	
+	var result = space_state.intersect_point(query)
+	
+	for overlap_data in result:
+		var collider = overlap_data.collider
+		if collider is Area2D and collider.is_in_group(target_group):
+			return collider
+	return null

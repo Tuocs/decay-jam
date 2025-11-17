@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj1vaempqokud"]
+[gd_scene load_steps=4 format=3 uid="uid://dvraoxaagvreu"]
 
 [ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_h3kin"]
 [ext_resource type="Script" uid="uid://btiobgar3mv7p" path="res://Scripts/zombie.gd" id="2_amqg5"]
@@ -9,6 +9,7 @@ script = ExtResource("2_amqg5")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_vvrc6")
+animation = &"death"
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-1.5, 1)

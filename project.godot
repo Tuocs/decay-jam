@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DecayJam"
-run/main_scene="uid://p5b0o5j45tjs"
+run/main_scene="uid://c611xvguj2e7j"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 

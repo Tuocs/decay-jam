@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c611xvguj2e7j"]
+[gd_scene load_steps=13 format=4 uid="uid://c611xvguj2e7j"]
 
 [ext_resource type="Script" uid="uid://fahp3vnmyc1w" path="res://Scripts/zombie_manager.gd" id="1_iqcmb"]
 [ext_resource type="Script" uid="uid://nmvdv5u3u4g4" path="res://Scripts/level_manager.gd" id="1_jeepb"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://be2jk8a1ea588" path="res://Prefabs/Light.tscn" id="6_kxr0u"]
 [ext_resource type="PackedScene" uid="uid://coqbvhfhw7mmy" path="res://Prefabs/guard.tscn" id="6_voj1p"]
 [ext_resource type="PackedScene" uid="uid://csia7epgxbj3q" path="res://Prefabs/pause_ui.tscn" id="7_kxr0u"]
+[ext_resource type="PackedScene" uid="uid://sw3csouqhjob" path="res://Prefabs/light_switch_right.tscn" id="9_8x8nf"]
+[ext_resource type="PackedScene" uid="uid://bplof3hhec7kj" path="res://Prefabs/light_switch_down.tscn" id="10_ej1bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxr0u"]
 size = Vector2(55.5, 20)
@@ -82,6 +84,18 @@ position = Vector2(211, 132)
 
 [node name="Light3" parent="ObjectsCanvasLayer" instance=ExtResource("6_kxr0u")]
 position = Vector2(142, 53)
+
+[node name="LightSwitch" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("light") instance=ExtResource("9_8x8nf")]
+position = Vector2(79, 37)
+light = NodePath("../Light")
+
+[node name="LightSwitch2" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("light") instance=ExtResource("10_ej1bv")]
+position = Vector2(168, 175)
+light = NodePath("../Light2")
+
+[node name="LightSwitch3" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("light") instance=ExtResource("9_8x8nf")]
+position = Vector2(271, 53)
+light = NodePath("../Light3")
 
 [node name="WallsCanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

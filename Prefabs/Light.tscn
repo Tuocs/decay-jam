@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://be2jk8a1ea588"]
+[gd_scene load_steps=6 format=3 uid="uid://be2jk8a1ea588"]
 
 [ext_resource type="Texture2D" uid="uid://dteaycdh4pvt8" path="res://Assets/wall_tiles.png" id="1_nr5ea"]
-[ext_resource type="Texture2D" uid="uid://bhmvsqlplyb7e" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_tupyj"]
+[ext_resource type="Script" uid="uid://6ar2cytybiyn" path="res://Scripts/light.gd" id="1_tupyj"]
+[ext_resource type="Texture2D" uid="uid://c3ca2fj7upual" path="res://Assets/light_mask.png" id="2_nr5ea"]
 [ext_resource type="Texture2D" uid="uid://b0d55fa1gldmq" path="res://Assets/light.png" id="3_8wulq"]
 
-[node name="Light" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nr5ea"]
+radius = 35.057095
+
+[node name="Light" type="Node2D" node_paths=PackedStringArray("coll", "pointLight")]
+script = ExtResource("1_tupyj")
+coll = NodePath("Area2D/CollisionShape2D")
+pointLight = NodePath("PointLight2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -15,9 +22,17 @@ texture = ExtResource("1_nr5ea")
 position = Vector2(0, 3)
 rotation = 1.5707964
 shadow_enabled = true
-texture = ExtResource("2_tupyj")
-texture_scale = 0.5
+texture = ExtResource("2_nr5ea")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 light_mask = 0
 texture = ExtResource("3_8wulq")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nr5ea")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

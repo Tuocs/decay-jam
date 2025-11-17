@@ -1,13 +1,15 @@
 extends Control
 
-@export var next_level: PackedScene
-@export var menu: PackedScene
+#@export var next_level: PackedScene
+#@export var menu: PackedScene
 
 
 
 func _on_button_3_pressed() -> void:
-	get_tree().change_scene_to_packed(next_level)
+	#get_tree().change_scene_to_packed(next_level)
+	pass
 
 
 func _on_quit_pressed() -> void:
-	get_tree().change_scene_to_packed(menu)
+	#get_tree().change_scene_to_packed(menu)
+	pass

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://hwnnvne8jo3l"]
 
-[ext_resource type="Script" uid="uid://bxb4w00b735bb" path="res://Prefabs/level_finish_ui.gd" id="1_3qjyq"]
+[ext_resource type="Script" uid="uid://bxb4w00b735bb" path="res://Scripts/level_finish_ui.gd" id="1_3qjyq"]
 
 [sub_resource type="Theme" id="Theme_wp2l4"]
 

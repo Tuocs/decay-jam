@@ -7,9 +7,8 @@
 script = ExtResource("2_amqg5")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-animation = &"selected"
-frame = 4
-frame_progress = 0.53323126
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-1.5, 1)

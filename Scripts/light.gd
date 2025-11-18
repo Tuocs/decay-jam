@@ -6,14 +6,14 @@ var inLight: Array[Node2D]
 @export var pointLight: PointLight2D
 
 # The rate at which this light does damage, every X seconds
-var damageRate = 1
+var damageRate = 0.2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for entity in inLight:
 		if entity.health <= 0:
 			inLight.erase(entity)
-			entity.queue_free()
+			entity.dead = true
 		else:
 			deal_damage(entity, delta)
 	

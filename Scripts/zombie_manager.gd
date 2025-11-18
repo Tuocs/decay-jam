@@ -3,7 +3,7 @@ extends Node2D
 var my_group_nodes
 var selected
 var target
-@onready var zombie_scene = preload("res://Prefabs/Zombie.tscn")
+@onready var zombie_scene = preload("res://Prefabs/guard_zombie.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

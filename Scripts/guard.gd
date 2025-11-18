@@ -7,6 +7,13 @@ var move_time = 0
 func _process(delta: float) -> void:
 	try_new_move()
 	current_time += delta
+	
+	# Walking animation
+	if walking:
+		animator.play("walk")
+	# Idle animation
+	else:
+		animator.play("idle")
 
 func try_new_move():
 	if walking == false && move_time < current_time:

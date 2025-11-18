@@ -2,10 +2,11 @@ extends Node2D
 
 var map
 var walking = false
+var animator: AnimatedSprite2D
 
 func _ready() -> void:
 	map = get_node("/root/Level/WallsCanvasLayer/WallsTilemap")
-
+	animator = $AnimatedSprite2D
 	
 func set_new_target_pos(new_pos: Vector2):
 	if walking:

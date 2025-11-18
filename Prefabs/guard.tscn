@@ -9,3 +9,7 @@ script = ExtResource("2_qtsra")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_2oat6")
+animation = &"walk"
+autoplay = "idle"
+frame = 5
+frame_progress = 0.29410717

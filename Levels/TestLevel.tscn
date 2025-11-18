@@ -3,17 +3,21 @@
 [ext_resource type="Script" uid="uid://fahp3vnmyc1w" path="res://Scripts/zombie_manager.gd" id="1_iqcmb"]
 [ext_resource type="Script" uid="uid://nmvdv5u3u4g4" path="res://Scripts/level_manager.gd" id="1_jeepb"]
 [ext_resource type="TileSet" uid="uid://cbrabpodamhjx" path="res://Assets/new_tile_set.tres" id="2_voj1p"]
-[ext_resource type="PackedScene" uid="uid://dvraoxaagvreu" path="res://Prefabs/zombie.tscn" id="2_y1yrn"]
-[ext_resource type="Script" uid="uid://dhjum2objh2bk" path="res://Scripts/tile_map_layer.gd" id="3_kxr0u"]
+[ext_resource type="PackedScene" uid="uid://bh7ahk1da8hra" path="res://Prefabs/zombie.tscn" id="2_y1yrn"]
 [ext_resource type="PackedScene" uid="uid://hwnnvne8jo3l" path="res://Prefabs/level_finish_ui.tscn" id="4_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://be2jk8a1ea588" path="res://Prefabs/Light.tscn" id="6_kxr0u"]
-[ext_resource type="PackedScene" uid="uid://coqbvhfhw7mmy" path="res://Prefabs/guard.tscn" id="6_voj1p"]
+[ext_resource type="PackedScene" path="res://Prefabs/guard.tscn" id="6_voj1p"]
 [ext_resource type="PackedScene" uid="uid://csia7epgxbj3q" path="res://Prefabs/pause_ui.tscn" id="7_kxr0u"]
 [ext_resource type="PackedScene" uid="uid://sw3csouqhjob" path="res://Prefabs/light_switch_right.tscn" id="9_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://bplof3hhec7kj" path="res://Prefabs/light_switch_down.tscn" id="10_ej1bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxr0u"]
 size = Vector2(55.5, 20)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ej1bv"]
+vertices = PackedVector2Array(122, 70, 122, -6.7109375, 150, -6.4375, 150, 42, 218, 70, 262, 42, 262, 166, 218, 106, 154, 166, 154, 134, 70, 106, 86, 134, 86, 166, 26, 166, 26, 54, 70, 26, -5, 26, -5, 54)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(10, 7, 9, 11), PackedInt32Array(11, 12, 13, 14, 10), PackedInt32Array(15, 10, 14), PackedInt32Array(16, 15, 14, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-15, -18, -15, 207, 302, 207, 304, -15)])
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("level_finish_ui")]
 script = ExtResource("1_jeepb")
@@ -83,12 +87,21 @@ script = ExtResource("1_iqcmb")
 
 [node name="Guard" parent="ObjectsCanvasLayer/ZombieManager" instance=ExtResource("6_voj1p")]
 position = Vector2(169, 118)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
 
 [node name="Zombie" parent="ObjectsCanvasLayer/ZombieManager" instance=ExtResource("2_y1yrn")]
 position = Vector2(25, 39)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
 
 [node name="Zombie2" parent="ObjectsCanvasLayer/ZombieManager" instance=ExtResource("2_y1yrn")]
 position = Vector2(41, 24)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
 
 [node name="Light" parent="ObjectsCanvasLayer" instance=ExtResource("6_kxr0u")]
 position = Vector2(49, 79)
@@ -115,12 +128,14 @@ light = NodePath("../Light3")
 layer = 0
 follow_viewport_enabled = true
 
-[node name="WallsTilemap" type="TileMapLayer" parent="WallsCanvasLayer"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WallsCanvasLayer"]
+navigation_polygon = SubResource("NavigationPolygon_ej1bv")
+
+[node name="WallsTilemap" type="TileMapLayer" parent="WallsCanvasLayer/NavigationRegion2D"]
 light_mask = 2
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAQAEAAEAAAABAAAAAQAEAAEAAAACAAAAAQAEAAEAAAAFAAEAAQAAAAEAAAAGAAEAAQADAAEAAAAMAAUAAQAFAAAAAAALAAUAAQAFAAEAAAAKAAsAAQAFAAEAAAAFAAIAAQAAAAEAAAAFAAMAAQAAAAEAAAAGAAQAAQADAAEAAAAFAAQAAQAAAAEAAAAJAAUAAQAFAAEAAAAKAAUAAQAEAAEAAAAGAAUAAQAFAAIAAAAFAAUAAQAAAAMAAAAAAAYAAQADAAIAAAAAAAcAAQADAAEAAAAIAAUAAQAEAAEAAAAAAAQAAQADAAAAAAAAAAUAAQADAAEAAAADAAAAAQAEAAEAAAAEAAAAAQAEAAEAAAAFAAAAAQAFAAMAAAAKAAAAAQAAAAIAAAALAAAAAQAHAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQACAAAAAAAPAAAAAQABAAAAAAAQAAAAAQACAAAAAAARAAAAAQACAAAAAAAGAAIAAQADAAIAAAAAAAsAAQAFAAIAAAAAAAoAAQADAAIAAAAAAAkAAQADAAEAAAAAAAgAAQADAAEAAAAGAAAAAQADAAAAAAALAAsAAQAFAAEAAAAMAAsAAQAEAAEAAAANAAsAAQAFAAEAAAAHAAUAAQAFAAEAAAAGAAMAAQADAAEAAAAKAAEAAQAAAAMAAAALAAEAAQABAAMAAAAMAAEAAQABAAMAAAAOAAEAAQABAAMAAAAQAAEAAQABAAMAAAARAAIAAQAAAAIAAAARAAEAAQAHAAEAAAANAAEAAQACAAMAAAAPAAEAAQACAAMAAAARAAMAAQAAAAEAAAARAAQAAQAAAAEAAAARAAYAAQAAAAEAAAARAAgAAQAAAAEAAAARAAcAAQAAAAIAAAARAAUAAQAAAAEAAAARAAkAAQAAAAEAAAARAAoAAQAAAAEAAAARAAsAAQAEAAIAAAAQAAsAAQAFAAEAAAAPAAsAAQAFAAEAAAAIAAsAAQABAAMAAAAFAAsAAQAFAAEAAAADAAsAAQAFAAEAAAABAAsAAQAFAAEAAAACAAsAAQAEAAEAAAAEAAsAAQAEAAEAAAAGAAsAAQABAAMAAAAHAAsAAQACAAMAAAAJAAsAAQAEAAEAAAAOAAsAAQAEAAEAAAAIAAoAAQADAAIAAAAGAAkAAQAAAAAAAAAGAAoAAQAAAAEAAAAIAAkAAQADAAAAAAAHAAoAAQABAAIAAAAHAAkAAQABAAAAAAA=")
 tile_set = ExtResource("2_voj1p")
-script = ExtResource("3_kxr0u")
 
 [connection signal="area_entered" from="UI/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="UI/Area2D" to="." method="_on_area_2d_body_entered"]

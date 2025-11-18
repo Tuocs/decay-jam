@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvraoxaagvreu"]
+[gd_scene load_steps=3 format=3 uid="uid://bh7ahk1da8hra"]
 
 [ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_h3kin"]
 [ext_resource type="Script" uid="uid://btiobgar3mv7p" path="res://Scripts/zombie.gd" id="2_amqg5"]
@@ -6,7 +6,7 @@
 [node name="Zombie" groups=["Zombie"] instance=ExtResource("1_h3kin")]
 script = ExtResource("2_amqg5")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"idle"
 autoplay = "idle"
 

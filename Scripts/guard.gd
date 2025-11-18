@@ -19,4 +19,4 @@ func try_new_move():
 	if walking == false && move_time < current_time:
 		move_time = current_time + randi_range(5, 10)
 		print(move_time)
-		set_new_target_pos(map.map_to_local(map.local_to_map(position) + Vector2i(randi_range(-5, 5), randi_range(-5, 5))))
+		set_new_target_pos(position + Vector2(randi_range(-50, 50), randi_range(-50, 50)))

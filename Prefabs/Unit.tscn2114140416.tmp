@@ -1,23 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3oy3dwght1qq"]
+[gd_scene load_steps=4 format=3 uid="uid://b3oy3dwght1qq"]
 
 [ext_resource type="Script" uid="uid://cajwem5vld680" path="res://Scripts/unit.gd" id="1_ta3r2"]
 [ext_resource type="SpriteFrames" uid="uid://cpsdxydolp4tk" path="res://Animations/Zombie.tres" id="2_ta3r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta3r2"]
-size = Vector2(28, 26)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mthqy"]
-size = Vector2(52, 50)
+size = Vector2(40, 40)
 
 [node name="Unit" type="CharacterBody2D" groups=["Unit"]]
 scale = Vector2(0.5, 0.5)
-collision_mask = 2
-motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_ta3r2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ta3r2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -29,7 +22,7 @@ offset = Vector2(0, -5.325)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_mthqy")
+shape = SubResource("RectangleShape2D_ta3r2")
 
 [node name="Nav" type="Node2D" parent="."]
 

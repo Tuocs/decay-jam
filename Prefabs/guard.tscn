@@ -7,7 +7,7 @@
 [node name="Guard" groups=["Guard"] instance=ExtResource("1_0intx")]
 script = ExtResource("2_qtsra")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("3_2oat6")
 animation = &"walk"
 autoplay = "idle"

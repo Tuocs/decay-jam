@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ce47oschy5r7c" path="res://Assets/Zombie/zombie_idle.png" id="1_0rien"]
 [ext_resource type="Texture2D" uid="uid://bh1ltipp5a4f8" path="res://Assets/Zombie/zombie_death.png" id="1_pns4q"]
-[ext_resource type="Texture2D" uid="uid://2oqi5n1rar5a" path="res://Assets/Zombie/zombie_selected.png" id="3_2mc58"]
+[ext_resource type="Texture2D" uid="uid://cerfmm7mgl33o" path="res://Assets/Zombie/zombie_selected.png" id="3_2mc58"]
 [ext_resource type="Texture2D" uid="uid://d4g67n2ckepke" path="res://Assets/Zombie/zombie_walk.png" id="4_ac4ql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0yn2"]

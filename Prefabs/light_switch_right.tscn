@@ -28,6 +28,7 @@ disabledSprite = SubResource("AtlasTexture_m3kr7")
 texture = SubResource("AtlasTexture_l6qrj")
 
 [node name="Area2D" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l6qrj")

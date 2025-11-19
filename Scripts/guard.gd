@@ -10,6 +10,7 @@ func _process(delta: float) -> void:
 	
 	# Walking animation
 	if walking:
+		direction_facing()
 		animator.play("walk")
 	# Idle animation
 	else:

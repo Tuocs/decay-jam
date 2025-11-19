@@ -1,19 +1,35 @@
 extends CharacterBody2D
 
-var map
+var map: TileMapLayer
+var mapSize: Vector2
 var walking = false
-var animator: AnimatedSprite2D
+@onready var animator: AnimatedSprite2D = $AnimatedSprite2D
 var speed = 100
 var acceleration = 10
 var target: Node2D
 @onready var navigation_agent: NavigationAgent2D = $Nav/NavigationAgent2D
 
 func _ready() -> void:
-	map = get_node("/root/Level/WallsCanvasLayer/WallsTilemap")
-	animator = $AnimatedSprite2D
+	map = get_node("/root/Level/GroundCanvasLayer/GroundTilemap")
+	mapSize = map.get_used_rect().size * map.tile_set.tile_size
+	print(mapSize)
 	add_new_target_node()
 	
+func _process(delta: float) -> void:
+	if walking:
+		direction_facing()
+	
+func direction_facing() -> void:
+	animator.flip_h = true if velocity.x > 0.1 else false
+	
 func set_new_target_pos(new_pos: Vector2):
+	# Gets the closest tile to the position clicked
+	var closestTilePos = map.get_cell_atlas_coords(map.local_to_map(new_pos))
+	# Only sets navigation position if the tile is valid
+	if closestTilePos == Vector2i(-1, -1):
+		print("Invalid tile clicked!")
+		return
+		
 	if walking:
 		return
 	walking = true

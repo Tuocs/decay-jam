@@ -3,13 +3,20 @@ extends "res://Scripts/unit.gd"
 var health = 10
 var damageTimer = 0
 var dead = false
+var deathConnected = false
 
 func _process(delta: float) -> void:
-	if dead and !animator.animation_finished.get_connections().has(death):
-		animator.play("death")
-		animator.animation_finished.connect(death)
+	if dead:
+		if deathConnected == false:
+			print("dewad!")
+			deathConnected = true
+			animator.play("death")
+			animator.animation_finished.connect(death)
+		else:
+			pass
 	# Walking animation
 	elif walking:
+		direction_facing()
 		animator.play("walk")
 	# Selected animation
 	elif get_parent().selected == self:

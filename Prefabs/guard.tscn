@@ -1,15 +1,168 @@
-[gd_scene load_steps=4 format=3 uid="uid://coqbvhfhw7mmy"]
+[gd_scene load_steps=24 format=3 uid="uid://coqbvhfhw7mmy"]
 
 [ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_0intx"]
 [ext_resource type="Script" uid="uid://b7yxp7rxv35wn" path="res://Scripts/guard.gd" id="2_qtsra"]
-[ext_resource type="SpriteFrames" uid="uid://djhqnpjqolhpu" path="res://Animations/Guard.tres" id="3_2oat6"]
+[ext_resource type="Texture2D" uid="uid://dteaycdh4pvt8" path="res://Assets/wall_tiles.png" id="3_kkivu"]
+[ext_resource type="Texture2D" uid="uid://dyi8q5pvsg3t1" path="res://Assets/Guard/guard_idle.png" id="4_3t1ui"]
+[ext_resource type="Texture2D" uid="uid://orhw3pkp7axl" path="res://Assets/prop_fade_start_50.png" id="5_w005r"]
+[ext_resource type="Script" uid="uid://6ar2cytybiyn" path="res://Scripts/light.gd" id="6_w005r"]
+[ext_resource type="Texture2D" uid="uid://3dcp4omvdg8h" path="res://Assets/Guard/guard_walk.png" id="7_s7tq7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t1ui"]
+atlas = ExtResource("4_3t1ui")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_lvcnd"]
+length = 0.001
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tq7"]
+atlas = ExtResource("4_3t1ui")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk134"]
+atlas = ExtResource("4_3t1ui")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvcnd"]
+atlas = ExtResource("4_3t1ui")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihab7"]
+atlas = ExtResource("4_3t1ui")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h3oc"]
+atlas = ExtResource("4_3t1ui")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_qfn6v"]
+resource_name = "idle"
+length = 0.7500125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_3t1ui"), SubResource("AtlasTexture_s7tq7"), SubResource("AtlasTexture_kk134"), SubResource("AtlasTexture_lvcnd"), SubResource("AtlasTexture_ihab7"), SubResource("AtlasTexture_5h3oc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:position:y")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4.5, 4.5, 4.5, 4.5, 5.5, 5.5]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ah4"]
+atlas = ExtResource("7_s7tq7")
+region = Rect2(11, 6, 11, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcb0v"]
+atlas = ExtResource("7_s7tq7")
+region = Rect2(43, 7, 11, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60ea8"]
+atlas = ExtResource("7_s7tq7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ij0b"]
+atlas = ExtResource("7_s7tq7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocr7a"]
+atlas = ExtResource("7_s7tq7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqvxc"]
+atlas = ExtResource("7_s7tq7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_kk134"]
+resource_name = "walk"
+length = 0.7500125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_e1ah4"), SubResource("AtlasTexture_kcb0v"), SubResource("AtlasTexture_60ea8"), SubResource("AtlasTexture_7ij0b"), SubResource("AtlasTexture_ocr7a"), SubResource("AtlasTexture_uqvxc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:position:y")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.62409616, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4.5, 4.5, 5.5, 5.5, 4.5, 4.5, 4.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihab7"]
+_data = {
+&"RESET": SubResource("Animation_lvcnd"),
+&"idle": SubResource("Animation_qfn6v"),
+&"walk": SubResource("Animation_kk134")
+}
 
 [node name="Guard" groups=["Guard"] instance=ExtResource("1_0intx")]
+scale = Vector2(1, 1)
 script = ExtResource("2_qtsra")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
-sprite_frames = ExtResource("3_2oat6")
-animation = &"walk"
+[node name="Sprite2D2" type="Sprite2D" parent="." index="0"]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("3_kkivu")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 4.5)
+
+[node name="Sprite2D" parent="." index="2"]
+texture = SubResource("AtlasTexture_3t1ui")
+
+[node name="AnimationPlayer" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_ihab7")
+}
 autoplay = "idle"
-frame = 5
-frame_progress = 0.29410717
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="6" node_paths=PackedStringArray("areaColl", "pointLight")]
+position = Vector2(-5, 4.5)
+rotation = -3.1415925
+energy = 0.3
+texture = ExtResource("5_w005r")
+offset = Vector2(46, 1.5)
+texture_scale = 0.5
+script = ExtResource("6_w005r")
+areaColl = NodePath("Area2D")
+pointLight = NodePath(".")
+
+[node name="Area2D" type="Area2D" parent="PointLight2D" index="0"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PointLight2D/Area2D" index="0"]
+position = Vector2(0, 0.5)
+polygon = PackedVector2Array(0, 0, 51.000004, 19.499992, 50.999996, -16.500008)
+
+[connection signal="area_entered" from="PointLight2D/Area2D" to="PointLight2D" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PointLight2D/Area2D" to="PointLight2D" method="_on_area_2d_area_exited"]

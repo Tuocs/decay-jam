@@ -7,6 +7,6 @@ func _process(delta: float) -> void:
 	if zombified:
 		super(delta)
 
-func swap_to_idle_after_zombify() -> void:
+func swap_to_idle_after_zombify(anim_name: StringName) -> void:
 	animator.animation_finished.disconnect(swap_to_idle_after_zombify)
 	zombified = true

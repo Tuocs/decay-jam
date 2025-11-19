@@ -8,7 +8,6 @@ var deathConnected = false
 func _process(delta: float) -> void:
 	if dead:
 		if deathConnected == false:
-			print("dewad!")
 			deathConnected = true
 			animator.play("death")
 			animator.animation_finished.connect(death)
@@ -37,5 +36,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		get_parent().add_new_zombie(area.get_parent().position)
 		area.get_parent().queue_free()
 
-func death() -> void:
+func death(anim_name: StringName) -> void:
 	queue_free()

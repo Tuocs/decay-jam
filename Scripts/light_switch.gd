@@ -20,9 +20,11 @@ func toggle_switch(value: bool) -> void:
 	if active == true:
 		switchSprite2D.texture = enabledSprite
 		light.pointLight.show()
-		light.coll.set_deferred("disabled", false)
+		light.areaColl.set_deferred("monitoring", true)
+		light.areaColl.set_deferred("monitorable", true)
 	else:
 		switchSprite2D.texture = disabledSprite
 		light.pointLight.hide()
-		light.coll.set_deferred("disabled", true)
+		light.areaColl.set_deferred("monitoring", false)
+		light.areaColl.set_deferred("monitorable", false)
 	pass

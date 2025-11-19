@@ -8,9 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nr5ea"]
 radius = 35.057095
 
-[node name="Light" type="Node2D" node_paths=PackedStringArray("coll", "pointLight")]
+[node name="Light" type="Node2D" node_paths=PackedStringArray("areaColl", "pointLight")]
 script = ExtResource("1_tupyj")
-coll = NodePath("Area2D/CollisionShape2D")
+areaColl = NodePath("Area2D")
 pointLight = NodePath("PointLight2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

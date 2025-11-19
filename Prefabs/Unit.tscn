@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3oy3dwght1qq"]
+[gd_scene load_steps=4 format=3 uid="uid://b3oy3dwght1qq"]
 
 [ext_resource type="Script" uid="uid://cajwem5vld680" path="res://Scripts/unit.gd" id="1_ta3r2"]
-[ext_resource type="SpriteFrames" uid="uid://cpsdxydolp4tk" path="res://Animations/Zombie.tres" id="2_ta3r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta3r2"]
-size = Vector2(28, 26)
+size = Vector2(15, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mthqy"]
-size = Vector2(52, 50)
+size = Vector2(21, 28)
 
 [node name="Unit" type="CharacterBody2D" groups=["Unit"]]
 scale = Vector2(0.5, 0.5)
@@ -20,11 +19,7 @@ script = ExtResource("1_ta3r2")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ta3r2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_ta3r2")
-animation = &"death"
-offset = Vector2(0, -5.325)
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -37,6 +32,8 @@ shape = SubResource("RectangleShape2D_mthqy")
 wait_time = 0.1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nav"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

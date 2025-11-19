@@ -3,7 +3,8 @@ extends CharacterBody2D
 var map: TileMapLayer
 var mapSize: Vector2
 var walking = false
-@onready var animator: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var animator: AnimationPlayer = $AnimationPlayer
 var speed = 100
 var acceleration = 10
 var target: Node2D
@@ -12,7 +13,6 @@ var target: Node2D
 func _ready() -> void:
 	map = get_node("/root/Level/GroundCanvasLayer/GroundTilemap")
 	mapSize = map.get_used_rect().size * map.tile_set.tile_size
-	print(mapSize)
 	add_new_target_node()
 	
 func _process(delta: float) -> void:
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		direction_facing()
 	
 func direction_facing() -> void:
-	animator.flip_h = true if velocity.x > 0.1 else false
+	sprite.flip_h = true if velocity.x > 0.1 else false
 	
 func set_new_target_pos(new_pos: Vector2):
 	# Gets the closest tile to the position clicked
@@ -44,7 +44,6 @@ func set_new_target_node(new_tar: Node2D):
 	walking = true
 	new_tar.add_child(target)
 	target.position = Vector2.ZERO
-	
 
 func _physics_process(delta: float) -> void:
 	if (position.distance_to(target.position) < 10):

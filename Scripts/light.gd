@@ -2,7 +2,8 @@ extends Node
 
 # All zombies currently in this light's range
 var inLight: Array[Node2D]
-@export var coll: CollisionShape2D
+# This light's Area2D, used in Light Switch toggle code
+@export var areaColl: Area2D
 @export var pointLight: PointLight2D
 
 # The rate at which this light does damage, every X seconds

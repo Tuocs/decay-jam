@@ -150,7 +150,6 @@ autoplay = "idle"
 [node name="PointLight2D" type="PointLight2D" parent="." index="6" node_paths=PackedStringArray("areaColl", "pointLight")]
 position = Vector2(-5, 4.5)
 rotation = -3.1415925
-energy = 0.3
 texture = ExtResource("5_w005r")
 offset = Vector2(46, 1.5)
 texture_scale = 0.5
@@ -162,7 +161,7 @@ pointLight = NodePath(".")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PointLight2D/Area2D" index="0"]
 position = Vector2(0, 0.5)
-polygon = PackedVector2Array(0, 0, 51.000004, 19.499992, 50.999996, -16.500008)
+polygon = PackedVector2Array(0, 0, 57.000004, 21.999992, 56.999996, -21.000008)
 
 [connection signal="area_entered" from="PointLight2D/Area2D" to="PointLight2D" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PointLight2D/Area2D" to="PointLight2D" method="_on_area_2d_area_exited"]

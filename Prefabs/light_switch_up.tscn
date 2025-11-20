@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://djfyai2hy8wkj"]
+[gd_scene load_steps=8 format=3 uid="uid://djfyai2hy8wkj"]
 
 [ext_resource type="Script" uid="uid://4bke0km3s8wd" path="res://Scripts/light_switch.gd" id="1_5bpbp"]
 [ext_resource type="Texture2D" uid="uid://dc5p7t7hangb2" path="res://Assets/light_switch.png" id="2_kufre"]
+[ext_resource type="Texture2D" uid="uid://c3ca2fj7upual" path="res://Assets/light_mask.png" id="3_kufre"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gq5i1"]
 atlas = ExtResource("2_kufre")
@@ -18,11 +19,14 @@ region = Rect2(5, 5, 5, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6qrj"]
 size = Vector2(8, 10)
 
-[node name="LightSwitch" type="Node2D" node_paths=PackedStringArray("switchSprite2D")]
+[node name="LightSwitch" type="Node2D" node_paths=PackedStringArray("switchSprite2D", "glowLight")]
 script = ExtResource("1_5bpbp")
 switchSprite2D = NodePath("Sprite2D")
 enabledSprite = SubResource("AtlasTexture_gq5i1")
 disabledSprite = SubResource("AtlasTexture_m3kr7")
+glowLight = NodePath("PointLight2D")
+onColor = Color(0.2509804, 0.65882355, 0.2901961, 1)
+offColor = Color(1, 0.38039216, 0.38039216, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_l6qrj")
@@ -32,5 +36,11 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l6qrj")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.38, 1, 0.4419999, 1)
+energy = 0.3
+texture = ExtResource("3_kufre")
+texture_scale = 0.1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

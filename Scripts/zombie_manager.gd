@@ -45,7 +45,7 @@ func _input(event):
 func add_new_zombie(_position: Vector2) -> void:
 	var new_object = zombie_scene.instantiate()
 	print("new zombie")
-	add_child(new_object)
+	add_child.call_deferred(new_object)
 	new_object.position = _position
 	RefreshZombies()
 

@@ -71,7 +71,7 @@ func is_sibling_of(node1: Node, node2: Node) -> bool:
 func add_new_target_node():
 	target = Node2D.new()
 	target.name = "NodeTarget"
-	get_parent().add_child(target)
+	get_parent().add_child.call_deferred(target)
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

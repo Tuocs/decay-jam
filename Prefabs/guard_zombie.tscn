@@ -12,6 +12,46 @@
 atlas = ExtResource("6_w6m5r")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="Animation" id="Animation_ie4jw"]
+length = 0.001
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pemyr"]
+atlas = ExtResource("7_y4of4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvpv2"]
+atlas = ExtResource("7_y4of4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxddb"]
+atlas = ExtResource("7_y4of4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tq70"]
+atlas = ExtResource("7_y4of4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dwax"]
+atlas = ExtResource("7_y4of4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_qsgsi"]
+resource_name = "death"
+length = 0.6250125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_pemyr"), SubResource("AtlasTexture_mvpv2"), SubResource("AtlasTexture_jxddb"), SubResource("AtlasTexture_7tq70"), SubResource("AtlasTexture_0dwax")]
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g71ww"]
 atlas = ExtResource("3_ie4jw")
 region = Rect2(0, 0, 32, 32)
@@ -64,54 +104,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [SubResource("AtlasTexture_g71ww"), SubResource("AtlasTexture_kpfmd"), SubResource("AtlasTexture_w6m5r"), SubResource("AtlasTexture_y4of4"), SubResource("AtlasTexture_0e186"), SubResource("AtlasTexture_bc374"), SubResource("AtlasTexture_gsklb"), SubResource("AtlasTexture_rsery"), SubResource("AtlasTexture_4w274")]
-}
-
-[sub_resource type="Animation" id="Animation_ie4jw"]
-length = 0.001
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjs7n"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4avy"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hram2"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqv6r"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qduuk"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_way4u"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdxdg"]
-atlas = ExtResource("4_g71ww")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="Animation" id="Animation_6pidy"]
-resource_name = "zombify"
-length = 0.8750125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [SubResource("AtlasTexture_hjs7n"), SubResource("AtlasTexture_w4avy"), SubResource("AtlasTexture_hram2"), SubResource("AtlasTexture_lqv6r"), SubResource("AtlasTexture_qduuk"), SubResource("AtlasTexture_way4u"), SubResource("AtlasTexture_qdxdg")]
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pidy"]
@@ -262,41 +254,49 @@ tracks/0/keys = {
 "values": [SubResource("AtlasTexture_m5yb4"), SubResource("AtlasTexture_fkfbl"), SubResource("AtlasTexture_bc46k"), SubResource("AtlasTexture_8yw7i"), SubResource("AtlasTexture_gheuw"), SubResource("AtlasTexture_lb8it"), SubResource("AtlasTexture_hmyv6"), SubResource("AtlasTexture_xfdbv"), SubResource("AtlasTexture_wxgj0"), SubResource("AtlasTexture_ekqy1"), SubResource("AtlasTexture_koknu"), SubResource("AtlasTexture_swqpg"), SubResource("AtlasTexture_6hogu"), SubResource("AtlasTexture_mbtas"), SubResource("AtlasTexture_1yy83"), SubResource("AtlasTexture_w8e04"), SubResource("AtlasTexture_kd78y"), SubResource("AtlasTexture_xqxcl"), SubResource("AtlasTexture_2yl7o"), SubResource("AtlasTexture_jfa8y"), SubResource("AtlasTexture_hfywt"), SubResource("AtlasTexture_i226y"), SubResource("AtlasTexture_3ntap"), SubResource("AtlasTexture_6r7fk")]
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pemyr"]
-atlas = ExtResource("7_y4of4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjs7n"]
+atlas = ExtResource("4_g71ww")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mvpv2"]
-atlas = ExtResource("7_y4of4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4avy"]
+atlas = ExtResource("4_g71ww")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jxddb"]
-atlas = ExtResource("7_y4of4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hram2"]
+atlas = ExtResource("4_g71ww")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tq70"]
-atlas = ExtResource("7_y4of4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqv6r"]
+atlas = ExtResource("4_g71ww")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dwax"]
-atlas = ExtResource("7_y4of4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qduuk"]
+atlas = ExtResource("4_g71ww")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_qsgsi"]
-resource_name = "death"
-length = 0.6250125
+[sub_resource type="AtlasTexture" id="AtlasTexture_way4u"]
+atlas = ExtResource("4_g71ww")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdxdg"]
+atlas = ExtResource("4_g71ww")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_6pidy"]
+resource_name = "zombify"
+length = 0.8750125
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [SubResource("AtlasTexture_pemyr"), SubResource("AtlasTexture_mvpv2"), SubResource("AtlasTexture_jxddb"), SubResource("AtlasTexture_7tq70"), SubResource("AtlasTexture_0dwax")]
+"values": [SubResource("AtlasTexture_hjs7n"), SubResource("AtlasTexture_w4avy"), SubResource("AtlasTexture_hram2"), SubResource("AtlasTexture_lqv6r"), SubResource("AtlasTexture_qduuk"), SubResource("AtlasTexture_way4u"), SubResource("AtlasTexture_qdxdg")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g71ww"]
@@ -312,6 +312,9 @@ _data = {
 [node name="Guard Zombie" groups=["Zombie"] instance=ExtResource("1_sovdv")]
 scale = Vector2(1, 1)
 script = ExtResource("2_ie4jw")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-1, 6)
 
 [node name="Sprite2D" parent="." index="1"]
 texture = SubResource("AtlasTexture_m5yb4")

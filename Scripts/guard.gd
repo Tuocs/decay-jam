@@ -3,11 +3,19 @@ extends "res://Scripts/unit.gd"
 var current_time = 0
 var move_time = 0
 @onready var light: PointLight2D = $PointLight2D
+@export var my_tuple_dict: Dictionary[Node2D, int]
+var pathing_list_pos = 0
 var lightStartPos: Vector2
+var keys_array
+var values_array
 
 func _ready() -> void:
+	if my_tuple_dict.size() == 0:
+		printerr("no path assigned")
 	super()
 	lightStartPos = light.position
+	keys_array = my_tuple_dict.keys()
+	values_array = my_tuple_dict.values()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,9 +32,12 @@ func _process(delta: float) -> void:
 
 func try_new_move():
 	if walking == false && move_time < current_time:
-		move_time = current_time + randi_range(5, 10)
+		pathing_list_pos += 1
+		if pathing_list_pos >= my_tuple_dict.size():
+			pathing_list_pos = 0
+		move_time = current_time + values_array[pathing_list_pos]
 		print(move_time)
-		set_new_target_pos(position + Vector2(randi_range(-50, 50), randi_range(-50, 50)))
+		set_new_target_pos(keys_array[pathing_list_pos].position)
 
 func direction_facing() -> void:
 	if velocity.x > 0.1:

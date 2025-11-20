@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgfnp6eh3828w"]
+[gd_scene load_steps=24 format=3 uid="uid://d35tijqnvb64e"]
 
 [ext_resource type="PackedScene" uid="uid://b3oy3dwght1qq" path="res://Prefabs/Unit.tscn" id="1_0intx"]
 [ext_resource type="Script" uid="uid://b7yxp7rxv35wn" path="res://Scripts/guard.gd" id="2_qtsra"]
@@ -126,9 +126,10 @@ _data = {
 &"walk": SubResource("Animation_kk134")
 }
 
-[node name="Guard" groups=["Guard"] instance=ExtResource("1_0intx")]
+[node name="Guard" node_paths=PackedStringArray("my_tuple_dict") groups=["Guard"] instance=ExtResource("1_0intx")]
 scale = Vector2(1, 1)
 script = ExtResource("2_qtsra")
+my_tuple_dict = {}
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="0"]
 visible = false

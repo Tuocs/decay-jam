@@ -130,6 +130,7 @@ _data = {
 scale = Vector2(1, 1)
 script = ExtResource("2_qtsra")
 my_tuple_dict = {}
+speed = 50
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="0"]
 visible = false
@@ -151,6 +152,7 @@ autoplay = "idle"
 [node name="PointLight2D" type="PointLight2D" parent="." index="6" node_paths=PackedStringArray("areaColl", "pointLight")]
 position = Vector2(-5, 4.5)
 rotation = -3.1415925
+shadow_enabled = true
 texture = ExtResource("5_w005r")
 offset = Vector2(46, 1.5)
 texture_scale = 0.5

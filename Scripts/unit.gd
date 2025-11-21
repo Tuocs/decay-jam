@@ -5,7 +5,7 @@ var mapSize: Vector2
 var walking = false
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animator: AnimationPlayer = $AnimationPlayer
-var speed = 100
+@export var speed = 100
 var acceleration = 10
 var target: Node2D
 @onready var navigation_agent: NavigationAgent2D = $Nav/NavigationAgent2D

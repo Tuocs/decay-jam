@@ -118,19 +118,19 @@ wall_min_slide_angle = 0.2617994
 position = Vector2(233, 88)
 
 [node name="Node2D2" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
-position = Vector2(153, 88)
+position = Vector2(171, 88)
 
 [node name="Node2D3" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
 position = Vector2(201, 152)
 
 [node name="Node2D4" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
-position = Vector2(100, 152)
+position = Vector2(143, 152)
 
 [node name="Node2D5" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
 position = Vector2(79, 88)
 
 [node name="Node2D6" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
-position = Vector2(24, 89)
+position = Vector2(58, 89)
 
 [node name="Light" parent="ObjectsCanvasLayer" instance=ExtResource("6_kxr0u")]
 position = Vector2(56, 146)

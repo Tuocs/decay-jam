@@ -36,9 +36,12 @@ func _input(event):
 	if event.is_action_pressed("Hotkey0") && my_group_nodes.size() >= 10:
 		selected = my_group_nodes[9]
 	if event.is_action_pressed("Order") && selected != null:
-		var collision = get_area_in_group(get_global_mouse_position(), "Guard")
-		if collision != null:
-			selected.set_new_target_pos(get_global_mouse_position())
+		var guard_collision = get_area_in_group(get_global_mouse_position(), "Guard")
+		var interact_collision = get_area_in_group(get_global_mouse_position(), "Guard")
+		if guard_collision != null:
+			selected.set_new_target_node(guard_collision)
+		elif interact_collision != null:
+			selected.set_new_target_node(interact_collision)
 		else:
 			selected.set_new_target_pos(get_global_mouse_position())
 

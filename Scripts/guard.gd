@@ -16,6 +16,7 @@ func _ready() -> void:
 	lightStartPos = light.position
 	keys_array = my_tuple_dict.keys()
 	values_array = my_tuple_dict.values()
+	move_time = current_time + values_array[0]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

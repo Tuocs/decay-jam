@@ -8,6 +8,7 @@ var pathing_list_pos = 0
 var lightStartPos: Vector2
 var keys_array
 var values_array
+var navigationOverride: bool = false
 
 func _ready() -> void:
 	if my_tuple_dict.size() == 0:
@@ -20,8 +21,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	try_new_move()
-	current_time += delta
+	# Only follow patrol paths if another object has not taken control
+	if !navigationOverride:
+		try_new_move()
+		current_time += delta
 	
 	# Walking animation
 	if walking:

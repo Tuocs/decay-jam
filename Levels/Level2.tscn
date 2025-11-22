@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://kij1qlsefqft"]
+[gd_scene load_steps=20 format=4 uid="uid://kij1qlsefqft"]
 
 [ext_resource type="Script" uid="uid://nmvdv5u3u4g4" path="res://Scripts/level_manager.gd" id="1_mbiy8"]
 [ext_resource type="PackedScene" uid="uid://csia7epgxbj3q" path="res://Prefabs/pause_ui.tscn" id="2_tweqo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ca2fj7upual" path="res://Assets/light_mask.png" id="11_oo0qn"]
 [ext_resource type="Texture2D" uid="uid://b0d55fa1gldmq" path="res://Assets/light.png" id="12_g0yir"]
 [ext_resource type="PackedScene" uid="uid://sw3csouqhjob" path="res://Prefabs/light_switch_right.tscn" id="13_1kwia"]
+[ext_resource type="PackedScene" uid="uid://x12ea13r8bs7" path="res://Prefabs/bottles.tscn" id="15_mbwna"]
 [ext_resource type="PackedScene" uid="uid://csiw67l6k06yv" path="res://Prefabs/boxes.tscn" id="15_tweqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxr0u"]
@@ -75,6 +76,18 @@ tile_set = ExtResource("4_v023s")
 [node name="ObjectsCanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="Bottles" parent="ObjectsCanvasLayer" instance=ExtResource("15_mbwna")]
+position = Vector2(256, 34)
+
+[node name="Boxes" parent="ObjectsCanvasLayer" instance=ExtResource("15_tweqo")]
+position = Vector2(32, 32)
+
+[node name="RangeArea2D" parent="ObjectsCanvasLayer/Boxes" index="2"]
+position = Vector2(72, 22)
+
+[node name="CollisionShape2D" parent="ObjectsCanvasLayer/Boxes/RangeArea2D" index="0"]
+position = Vector2(-20, -18)
+
 [node name="ZombieManager" type="Node2D" parent="ObjectsCanvasLayer"]
 script = ExtResource("5_biamp")
 
@@ -98,13 +111,12 @@ NodePath("../../PathNodes/Node2D5"): 4
 }
 
 [node name="Guard3" parent="ObjectsCanvasLayer/ZombieManager" node_paths=PackedStringArray("my_tuple_dict") instance=ExtResource("6_cch3g")]
-position = Vector2(208, 65)
+position = Vector2(295, 62)
 collision_mask = 1
 motion_mode = 0
 wall_min_slide_angle = 0.2617994
 my_tuple_dict = {
-NodePath("../../PathNodes/Node2D"): 4,
-NodePath("../../PathNodes/Node2D2"): 3
+NodePath("../../PathNodes/Node2D"): 4
 }
 
 [node name="Zombie" parent="ObjectsCanvasLayer/ZombieManager" instance=ExtResource("7_l5acx")]
@@ -116,10 +128,7 @@ wall_min_slide_angle = 0.2617994
 [node name="PathNodes" type="Node2D" parent="ObjectsCanvasLayer"]
 
 [node name="Node2D" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
-position = Vector2(257, 74)
-
-[node name="Node2D2" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
-position = Vector2(208, 74)
+position = Vector2(295, 72)
 
 [node name="Node2D3" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
 position = Vector2(241, 152)
@@ -167,15 +176,6 @@ shape = SubResource("CircleShape2D_ijb51")
 [node name="LightSwitch2" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("light") instance=ExtResource("13_1kwia")]
 position = Vector2(159, 37)
 light = NodePath("../Light2")
-
-[node name="Boxes" parent="ObjectsCanvasLayer" instance=ExtResource("15_tweqo")]
-position = Vector2(32, 32)
-
-[node name="RangeArea2D" parent="ObjectsCanvasLayer/Boxes" index="2"]
-position = Vector2(72, 22)
-
-[node name="CollisionShape2D" parent="ObjectsCanvasLayer/Boxes/RangeArea2D" index="0"]
-position = Vector2(-20, -18)
 
 [node name="WallsCanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

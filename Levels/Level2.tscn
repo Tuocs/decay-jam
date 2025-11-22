@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=4 uid="uid://kij1qlsefqft"]
+
+[ext_resource type="Script" uid="uid://nmvdv5u3u4g4" path="res://Scripts/level_manager.gd" id="1_mbiy8"]
+[ext_resource type="PackedScene" uid="uid://csia7epgxbj3q" path="res://Prefabs/pause_ui.tscn" id="2_tweqo"]
+[ext_resource type="PackedScene" uid="uid://hwnnvne8jo3l" path="res://Prefabs/level_finish_ui.tscn" id="3_mbwna"]
+[ext_resource type="TileSet" uid="uid://cbrabpodamhjx" path="res://Assets/new_tile_set.tres" id="4_v023s"]
+[ext_resource type="Script" uid="uid://fahp3vnmyc1w" path="res://Scripts/zombie_manager.gd" id="5_biamp"]
+[ext_resource type="PackedScene" uid="uid://b4kq2pn00ebl2" path="res://Prefabs/guard.tscn" id="6_cch3g"]
+[ext_resource type="PackedScene" uid="uid://bykdnwvkytgjg" path="res://Prefabs/zombie.tscn" id="7_l5acx"]
+[ext_resource type="PackedScene" uid="uid://be2jk8a1ea588" path="res://Prefabs/Light.tscn" id="8_6dto8"]
+[ext_resource type="Script" uid="uid://6ar2cytybiyn" path="res://Scripts/light.gd" id="9_0dh5q"]
+[ext_resource type="PackedScene" uid="uid://bx1xanmrdu5lm" path="res://Prefabs/light_switch_left.tscn" id="9_mbiy8"]
+[ext_resource type="Texture2D" uid="uid://dteaycdh4pvt8" path="res://Assets/wall_tiles.png" id="10_rxkep"]
+[ext_resource type="Texture2D" uid="uid://c3ca2fj7upual" path="res://Assets/light_mask.png" id="11_oo0qn"]
+[ext_resource type="Texture2D" uid="uid://b0d55fa1gldmq" path="res://Assets/light.png" id="12_g0yir"]
+[ext_resource type="PackedScene" uid="uid://sw3csouqhjob" path="res://Prefabs/light_switch_right.tscn" id="13_1kwia"]
+[ext_resource type="PackedScene" uid="uid://csiw67l6k06yv" path="res://Prefabs/boxes.tscn" id="15_tweqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxr0u"]
+size = Vector2(55.5, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ijb51"]
+radius = 64.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ej1bv"]
+vertices = PackedVector2Array(152, 24, 152, 56, 72, 56, 24, 24, 152, 168, 120, 120, 120, 104, 200, 104, 264, 168, 200, 24, 264, 24, 264, 56, 328, 56, 328, 72, 264, 72, 152, 199, 136, 199, 136, 168, 24, 168, 72, 120, 24, 104, 56, 104, 56, 56, 24, 56)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(7, 9, 10, 11), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(7, 11, 14), PackedInt32Array(7, 14, 8), PackedInt32Array(4, 15, 16, 17), PackedInt32Array(5, 4, 17), PackedInt32Array(5, 17, 18, 19), PackedInt32Array(19, 18, 20, 21), PackedInt32Array(2, 19, 21, 22), PackedInt32Array(3, 2, 22), PackedInt32Array(3, 22, 23)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 207, 288, 207, 288, 96, 336, 96, 336, 31.285538, 288, 32, 288, 0)])
+agent_radius = 8.0
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("level_finish_ui")]
+script = ExtResource("1_mbiy8")
+level_finish_ui = NodePath("UI/Camera2D/Level Finish UI")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 999
+follow_viewport_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="UI"]
+position = Vector2(152, 94)
+zoom = Vector2(4, 4)
+
+[node name="PauseUI" parent="UI/Camera2D" instance=ExtResource("2_tweqo")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+scale = Vector2(0.5, 0.5)
+
+[node name="Level Finish UI" parent="UI/Camera2D" instance=ExtResource("3_mbwna")]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="LevelFinishZone" type="Area2D" parent="UI"]
+position = Vector2(307, 65)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/LevelFinishZone"]
+shape = SubResource("RectangleShape2D_kxr0u")
+
+[node name="GroundCanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="GroundCanvasLayer"]
+color = Color(0.18538326, 0.18538326, 0.18538326, 1)
+
+[node name="GroundTilemap" type="TileMapLayer" parent="GroundCanvasLayer"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAEAAAAAAAEAAAACAAEAAAABAAAAAAADAAEAAAACAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAEAAAAFAAIAAAABAAAAAAAGAAIAAAABAAEAAAAGAAEAAAAAAAAAAAAHAAEAAAABAAEAAAAIAAEAAAABAAAAAAAFAAEAAAACAAAAAAAEAAEAAAABAAAAAAAJAAEAAAABAAAAAAAJAAIAAAABAAEAAAAIAAIAAAACAAAAAAAHAAIAAAABAAAAAAACAAIAAAAAAAAAAAABAAIAAAACAAAAAAABAAMAAAAAAAEAAAACAAMAAAAAAAEAAAADAAMAAAABAAEAAAAEAAMAAAAAAAEAAAAFAAMAAAAAAAEAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAACAAAAAAAJAAMAAAABAAAAAAADAAQAAAACAAAAAAADAAUAAAAAAAAAAAAEAAQAAAAAAAEAAAAEAAUAAAACAAAAAAABAAYAAAAAAAEAAAACAAYAAAABAAEAAAADAAYAAAACAAAAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAcAAAABAAAAAAACAAcAAAAAAAEAAAABAAcAAAAAAAAAAAABAAgAAAAAAAEAAAABAAkAAAAAAAEAAAABAAoAAAABAAAAAAACAAoAAAACAAAAAAADAAoAAAACAAAAAAAEAAoAAAACAAAAAAAFAAoAAAABAAEAAAAEAAkAAAACAAAAAAAEAAgAAAACAAAAAAADAAgAAAAAAAAAAAACAAgAAAAAAAEAAAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAFAAcAAAABAAEAAAAGAAcAAAACAAAAAAAHAAcAAAAAAAAAAAAFAAgAAAACAAAAAAAGAAgAAAAAAAAAAAAFAAkAAAABAAEAAAAGAAkAAAAAAAAAAAAHAAkAAAACAAAAAAAIAAkAAAAAAAAAAAAGAAoAAAACAAAAAAAHAAoAAAABAAEAAAAIAAoAAAABAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAABAAAAAAANAAoAAAAAAAEAAAAOAAoAAAABAAEAAAAPAAoAAAACAAAAAAAQAAoAAAACAAAAAAAQAAkAAAAAAAAAAAAQAAgAAAACAAAAAAAQAAcAAAAAAAAAAAAQAAYAAAAAAAEAAAAPAAYAAAACAAAAAAAOAAYAAAACAAAAAAANAAYAAAAAAAAAAAAMAAYAAAABAAAAAAALAAYAAAACAAAAAAAKAAYAAAAAAAAAAAAJAAYAAAABAAAAAAAIAAYAAAAAAAEAAAAHAAYAAAAAAAAAAAAGAAYAAAABAAEAAAAHAAgAAAABAAAAAAAIAAgAAAABAAEAAAAIAAcAAAACAAAAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAEAAAAKAAkAAAABAAEAAAAKAAgAAAAAAAEAAAAKAAcAAAAAAAEAAAALAAcAAAAAAAAAAAALAAgAAAABAAEAAAALAAkAAAAAAAAAAAAMAAkAAAABAAEAAAAMAAgAAAAAAAEAAAAMAAcAAAAAAAAAAAANAAcAAAABAAEAAAANAAgAAAACAAAAAAANAAkAAAACAAAAAAAOAAkAAAABAAEAAAAOAAgAAAAAAAEAAAAOAAcAAAABAAEAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAABAAAAAAAIAAsAAAAAAAEAAAAIAAwAAAACAAAAAAAJAAsAAAACAAAAAAAJAAwAAAAAAAEAAAAMAAEAAAACAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAABAAAAAAAMAAQAAAACAAAAAAAMAAUAAAAAAAEAAAANAAUAAAABAAEAAAANAAQAAAABAAAAAAANAAMAAAAAAAAAAAANAAIAAAABAAEAAAANAAEAAAAAAAEAAAAOAAEAAAABAAAAAAAOAAIAAAAAAAEAAAAOAAMAAAACAAAAAAAOAAQAAAABAAEAAAAOAAUAAAAAAAEAAAAPAAUAAAABAAEAAAAPAAQAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAIAAAABAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAABAAAAAAAQAAMAAAACAAAAAAAQAAQAAAAAAAEAAAAQAAUAAAABAAAAAAARAAMAAAAAAAEAAAASAAMAAAABAAAAAAATAAMAAAABAAAAAAAUAAMAAAAAAAEAAAARAAQAAAAAAAEAAAASAAQAAAABAAEAAAATAAQAAAABAAAAAAAUAAQAAAAAAAAAAAA=")
+tile_set = ExtResource("4_v023s")
+
+[node name="ObjectsCanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ZombieManager" type="Node2D" parent="ObjectsCanvasLayer"]
+script = ExtResource("5_biamp")
+
+[node name="Guard" parent="ObjectsCanvasLayer/ZombieManager" node_paths=PackedStringArray("my_tuple_dict") instance=ExtResource("6_cch3g")]
+position = Vector2(241, 142)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
+my_tuple_dict = {
+NodePath("../../PathNodes/Node2D3"): 3,
+NodePath("../../PathNodes/Node2D4"): 2
+}
+
+[node name="Guard2" parent="ObjectsCanvasLayer/ZombieManager" node_paths=PackedStringArray("my_tuple_dict") instance=ExtResource("6_cch3g")]
+position = Vector2(145, 40)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
+my_tuple_dict = {
+NodePath("../../PathNodes/Node2D5"): 4
+}
+
+[node name="Guard3" parent="ObjectsCanvasLayer/ZombieManager" node_paths=PackedStringArray("my_tuple_dict") instance=ExtResource("6_cch3g")]
+position = Vector2(208, 65)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
+my_tuple_dict = {
+NodePath("../../PathNodes/Node2D"): 4,
+NodePath("../../PathNodes/Node2D2"): 3
+}
+
+[node name="Zombie" parent="ObjectsCanvasLayer/ZombieManager" instance=ExtResource("7_l5acx")]
+position = Vector2(145, 190)
+collision_mask = 1
+motion_mode = 0
+wall_min_slide_angle = 0.2617994
+
+[node name="PathNodes" type="Node2D" parent="ObjectsCanvasLayer"]
+
+[node name="Node2D" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
+position = Vector2(257, 74)
+
+[node name="Node2D2" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
+position = Vector2(208, 74)
+
+[node name="Node2D3" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
+position = Vector2(241, 152)
+
+[node name="Node2D4" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
+position = Vector2(48, 152)
+
+[node name="Node2D5" type="Node2D" parent="ObjectsCanvasLayer/PathNodes"]
+position = Vector2(145, 50)
+
+[node name="Light" parent="ObjectsCanvasLayer" instance=ExtResource("8_6dto8")]
+position = Vector2(56, 139)
+
+[node name="LightSwitch" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("light") instance=ExtResource("9_mbiy8")]
+position = Vector2(17, 147)
+light = NodePath("../Light")
+
+[node name="Light2" type="Node2D" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("areaColl", "pointLight")]
+position = Vector2(225, 132)
+script = ExtResource("9_0dh5q")
+areaColl = NodePath("Area2D")
+pointLight = NodePath("PointLight2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjectsCanvasLayer/Light2"]
+visible = false
+scale = Vector2(9, 9)
+texture = ExtResource("10_rxkep")
+
+[node name="PointLight2D" type="PointLight2D" parent="ObjectsCanvasLayer/Light2"]
+rotation = 1.5707964
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("11_oo0qn")
+texture_scale = 1.6
+
+[node name="Sprite" type="Sprite2D" parent="ObjectsCanvasLayer/Light2"]
+light_mask = 0
+texture = ExtResource("12_g0yir")
+
+[node name="Area2D" type="Area2D" parent="ObjectsCanvasLayer/Light2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectsCanvasLayer/Light2/Area2D"]
+shape = SubResource("CircleShape2D_ijb51")
+
+[node name="LightSwitch2" parent="ObjectsCanvasLayer" node_paths=PackedStringArray("light") instance=ExtResource("13_1kwia")]
+position = Vector2(159, 37)
+light = NodePath("../Light2")
+
+[node name="Boxes" parent="ObjectsCanvasLayer" instance=ExtResource("15_tweqo")]
+position = Vector2(32, 32)
+
+[node name="RangeArea2D" parent="ObjectsCanvasLayer/Boxes" index="2"]
+position = Vector2(72, 22)
+
+[node name="CollisionShape2D" parent="ObjectsCanvasLayer/Boxes/RangeArea2D" index="0"]
+position = Vector2(-20, -18)
+
+[node name="WallsCanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WallsCanvasLayer"]
+navigation_polygon = SubResource("NavigationPolygon_ej1bv")
+
+[node name="WallsTilemap" type="TileMapLayer" parent="WallsCanvasLayer/NavigationRegion2D"]
+light_mask = 2
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAQAEAAMAAAABAAAAAQAEAAEAAAAKAAAAAQAFAAMAAAALAAAAAQAEAAMAAAAMAAAAAQAEAAEAAAANAAAAAQAFAAEAAAAOAAAAAQAEAAEAAAAPAAAAAQAEAAEAAAAQAAAAAQAFAAEAAAARAAAAAQAFAAMAAAARAAIAAQAAAAMAAAAAAAUAAQAGAAEAAAAAAAYAAQADAAEAAAAAAAcAAQADAAIAAAAAAAgAAQADAAEAAAAAAAkAAQADAAEAAAAAAAoAAQADAAEAAAAAAAsAAQAHAAAAAAAAAAwAAQABAAMAAAABAAwAAQABAAMAAAACAAwAAQACAAMAAAADAAwAAQABAAMAAAAEAAwAAQACAAMAAAAFAAwAAQABAAMAAAAGAAsAAQABAAAAAAAGAAwAAQABAAMAAAAHAAsAAQADAAAAAAAHAAwAAQADAAMAAAAKAAwAAQAAAAMAAAALAAwAAQACAAMAAAAMAAwAAQABAAMAAAANAAwAAQABAAMAAAAOAAwAAQACAAMAAAAPAAwAAQABAAMAAAAQAAwAAQACAAMAAAARAAUAAQAAAAAAAAARAAYAAQAAAAEAAAARAAcAAQAAAAEAAAARAAgAAQAAAAIAAAARAAkAAQAAAAEAAAARAAoAAQAAAAEAAAARAAsAAQAGAAAAAAARAAwAAQACAAMAAAAAAAMAAQADAAEAAAAAAAQAAQAHAAAAAAADAAAAAQAEAAEAAAAEAAAAAQAEAAEAAAAFAAAAAQAFAAEAAAAGAAAAAQAEAAEAAAAGAAQAAQACAAAAAAAHAAAAAQAEAAEAAAACAAAAAQAFAAEAAAAHAAQAAQABAAAAAAAFAAsAAQABAAAAAAADAAsAAQABAAAAAAABAAsAAQABAAAAAAAEAAsAAQACAAAAAAACAAsAAQACAAAAAAAAAAIAAQADAAEAAAAAAAEAAQADAAEAAAABAAQAAQABAAAAAAABAAUAAQACAAMAAAACAAUAAQADAAMAAAACAAQAAQADAAAAAAAFAAYAAQAAAAMAAAAGAAYAAQADAAMAAAAFAAUAAQAAAAIAAAAFAAQAAQAAAAAAAAAGAAUAAQAGAAEAAAAIAAQAAQABAAAAAAAJAAQAAQACAAAAAAAHAAUAAQABAAMAAAAIAAUAAQACAAMAAAAJAAUAAQACAAMAAAAKAAUAAQABAAMAAAAIAAAAAQAFAAEAAAAJAAAAAQAFAAEAAAALAAUAAQADAAMAAAALAAQAAQADAAIAAAALAAEAAQADAAIAAAALAAIAAQADAAEAAAALAAMAAQADAAEAAAAKAAQAAQAGAAAAAAAKAAMAAQAAAAIAAAAKAAIAAQAAAAEAAAAKAAEAAQAAAAEAAAAQAAsAAQACAAAAAAANAAsAAQACAAAAAAAMAAsAAQACAAAAAAALAAsAAQABAAAAAAAOAAsAAQABAAAAAAAPAAsAAQABAAAAAAAKAAsAAQAAAAAAAAARAAEAAQAAAAEAAAASAAIAAQABAAMAAAATAAIAAQACAAMAAAAUAAIAAQACAAMAAAASAAUAAQABAAAAAAAUAAUAAQABAAAAAAATAAUAAQACAAAAAAA=")
+tile_set = ExtResource("4_v023s")
+
+[connection signal="area_entered" from="UI/LevelFinishZone" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="UI/LevelFinishZone" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="ObjectsCanvasLayer/Light2/Area2D" to="ObjectsCanvasLayer/Light2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="ObjectsCanvasLayer/Light2/Area2D" to="ObjectsCanvasLayer/Light2" method="_on_area_2d_area_exited"]
+
+[editable path="ObjectsCanvasLayer/Boxes"]

@@ -7,6 +7,7 @@ var deathConnected = false
 
 func _process(delta: float) -> void:
 	if dead:
+		speed = 0 # stop walking if dead
 		if deathConnected == false:
 			deathConnected = true
 			animator.play("death")

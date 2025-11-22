@@ -320,7 +320,7 @@ position = Vector2(-1, 6)
 texture = SubResource("AtlasTexture_m5yb4")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(-1.5, 1)
+position = Vector2(-0.5, 7)
 
 [node name="AnimationPlayer" parent="." index="4"]
 libraries = {

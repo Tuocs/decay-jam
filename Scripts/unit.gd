@@ -13,6 +13,7 @@ var target: Node2D
 func _ready() -> void:
 	map = get_node("/root/Level/GroundCanvasLayer/GroundTilemap")
 	mapSize = map.get_used_rect().size * map.tile_set.tile_size
+	print(mapSize)
 	add_new_target_node()
 	
 func _process(delta: float) -> void:

@@ -7,7 +7,8 @@ var inLight: Array[Node2D]
 @export var pointLight: PointLight2D
 
 # The rate at which this light does damage, every X seconds
-var damageRate = 0.1
+@export var damageRate = 0.05
+@export var damage = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,7 +25,7 @@ func deal_damage(entity: Node2D, delta: float) -> void:
 	# Deals 1 damage every damageRate seconds
 	if entity.damageTimer > damageRate:
 		entity.damageTimer = 0
-		entity.health -= 1
+		entity.health -= damage
 		print(entity.name, " took damage! HP: ", entity.health)
 
 func _on_area_2d_area_entered(area: Area2D):

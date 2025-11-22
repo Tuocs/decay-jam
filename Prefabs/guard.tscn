@@ -143,6 +143,9 @@ position = Vector2(0.5, 4.5)
 [node name="Sprite2D" parent="." index="2"]
 texture = SubResource("AtlasTexture_3t1ui")
 
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.5, 7)
+
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {
 &"": SubResource("AnimationLibrary_ihab7")
@@ -159,6 +162,8 @@ texture_scale = 0.5
 script = ExtResource("6_w005r")
 areaColl = NodePath("Area2D")
 pointLight = NodePath(".")
+damageRate = 0.02
+damage = 2
 
 [node name="Area2D" type="Area2D" parent="PointLight2D" index="0"]
 

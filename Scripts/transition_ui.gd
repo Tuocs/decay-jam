@@ -13,7 +13,7 @@ var Level4
 func _ready() -> void:
 	MenuScene = preload("res://Levels/Menu.tscn")
 	Level1 = preload("res://Levels/TestLevel.tscn")
-	Level2 = preload("res://Levels/TestLevel.tscn")
+	Level2 = preload("res://Levels/Level2.tscn")
 	Level3 = preload("res://Levels/TestLevel.tscn")
 	Level4 = preload("res://Levels/TestLevel.tscn")
 	if fade_bar == null:

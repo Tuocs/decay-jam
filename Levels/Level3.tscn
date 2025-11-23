@@ -249,6 +249,15 @@ scale = Vector2(0.5, 0.5)
 visible = false
 scale = Vector2(0.5, 0.5)
 
+[node name="Label" parent="UI/Camera2D/Level Finish UI/Panel/MarginContainer2/Panel" index="0"]
+text = "You infected everyone!!!!!!!!"
+
+[node name="NextButton" parent="UI/Camera2D/Level Finish UI/Panel/MarginContainer/VBoxContainer" index="0"]
+text = "Main Menu"
+
+[node name="quit" parent="UI/Camera2D/Level Finish UI/Panel/MarginContainer" index="1"]
+visible = false
+
 [node name="Level Lost UI" parent="UI/Camera2D" instance=ExtResource("4_xc3xs")]
 visible = false
 scale = Vector2(0.5, 0.5)
@@ -590,4 +599,5 @@ tile_set = ExtResource("4_tqo56")
 [connection signal="area_entered" from="ObjectsCanvasLayer/Light5/Area2D" to="ObjectsCanvasLayer/Light5" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="ObjectsCanvasLayer/Light5/Area2D" to="ObjectsCanvasLayer/Light5" method="_on_area_2d_area_exited"]
 
+[editable path="UI/Camera2D/Level Finish UI"]
 [editable path="ObjectsCanvasLayer/LightSwitch2"]

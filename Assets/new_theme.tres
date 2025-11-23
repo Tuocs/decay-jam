@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=12 format=4 uid="uid://bu5ixodkyb1k1"]
+[gd_resource type="Theme" load_steps=11 format=4 uid="uid://bu5ixodkyb1k1"]
 
 [ext_resource type="Texture2D" uid="uid://ludcymjprbe1" path="res://Assets/New Piskel-3.png.png" id="1_v7r0k"]
-[ext_resource type="Texture2D" uid="uid://c5mg35tqtfuav" path="res://Assets/New Piskel-1.png (1).png" id="2_koc4f"]
 
 [sub_resource type="Image" id="Image_6usot"]
 data = {
@@ -1094,6 +1093,7 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(5.6254807, 12.606408, 20.724638, 6.8802443)
+modulate_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1fdjr"]
 texture = ExtResource("1_v7r0k")
@@ -1108,7 +1108,6 @@ texture = ExtResource("1_v7r0k")
 region_rect = Rect2(5.6254807, 12.606408, 20.724638, 6.8802443)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otpj4"]
-texture = ExtResource("2_koc4f")
 texture_margin_left = 6.3684216
 texture_margin_top = 5.7223496
 texture_margin_right = 6.829901
@@ -1125,7 +1124,7 @@ Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0.3403393, 0.34033933, 0.3403393, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 0, 0, 1)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)

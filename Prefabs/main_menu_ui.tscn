@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4lcxepryuh6s"]
+[gd_scene load_steps=3 format=3 uid="uid://b4lcxepryuh6s"]
 
 [ext_resource type="Script" uid="uid://dtscncoiq5o1k" path="res://Scripts/main_menu_ui.gd" id="1_pqv25"]
+[ext_resource type="Theme" uid="uid://bu5ixodkyb1k1" path="res://Assets/new_theme.tres" id="2_sq287"]
 
 [node name="MainMenuUI" type="Control"]
 layout_mode = 3
@@ -27,6 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("2_sq287")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -53,6 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "ZombieGame"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1

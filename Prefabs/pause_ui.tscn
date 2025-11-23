@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://csia7epgxbj3q"]
 
 [ext_resource type="Script" uid="uid://fjb4hvjgy2y" path="res://Scripts/pause_ui.gd" id="1_h5t0b"]
-
-[sub_resource type="Theme" id="Theme_h5t0b"]
+[ext_resource type="Theme" uid="uid://bu5ixodkyb1k1" path="res://Assets/new_theme.tres" id="2_e0dfo"]
 
 [node name="PauseUI" type="Control"]
 layout_mode = 3
@@ -14,7 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_h5t0b")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(200, 300)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,12 +23,12 @@ anchor_bottom = 0.5
 offset_left = -100.0
 offset_top = -150.0
 offset_right = 100.0
-offset_bottom = 150.0
+offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_h5t0b")
+theme = ExtResource("2_e0dfo")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -56,6 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Paused"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -73,18 +73,6 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 4
-text = "Resume"
-
-[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 4
-text = "Resume"
-
-[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 4

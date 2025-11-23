@@ -13,6 +13,8 @@ func RefreshZombies():
 	my_group_nodes = get_tree().get_nodes_in_group("Zombie")
 	for node in my_group_nodes:
 		print("Node in group: ", node.name)
+	if my_group_nodes.size() == 0:
+		$"../../UI/Camera2D/Level Lost UI".visible = true
 
 func _input(event):
 	if event.is_action_pressed("Hotkey1") && my_group_nodes.size() >= 1:

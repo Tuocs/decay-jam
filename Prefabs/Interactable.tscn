@@ -14,11 +14,13 @@ script = ExtResource("1_51vf1")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CloseRangeArea2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CloseRangeArea2D"]
 shape = SubResource("CircleShape2D_51vf1")
 
 [node name="RangeArea2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea2D"]
 shape = SubResource("RectangleShape2D_b7dgr")
@@ -26,8 +28,8 @@ shape = SubResource("RectangleShape2D_b7dgr")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="CloseRangeArea2D" to="." method="on_close_range_enter"]
+[connection signal="input_event" from="CloseRangeArea2D" to="." method="on_mouse_click"]
+[connection signal="mouse_entered" from="CloseRangeArea2D" to="." method="on_mouse_hover"]
+[connection signal="mouse_exited" from="CloseRangeArea2D" to="." method="on_mouse_unhover"]
 [connection signal="area_entered" from="RangeArea2D" to="." method="on_range_enter"]
 [connection signal="area_exited" from="RangeArea2D" to="." method="on_range_exit"]
-[connection signal="input_event" from="RangeArea2D" to="." method="on_mouse_click"]
-[connection signal="mouse_entered" from="RangeArea2D" to="." method="on_mouse_hover"]
-[connection signal="mouse_exited" from="RangeArea2D" to="." method="on_mouse_unhover"]

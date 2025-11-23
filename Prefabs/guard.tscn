@@ -128,6 +128,7 @@ _data = {
 
 [node name="Guard" node_paths=PackedStringArray("my_tuple_dict") groups=["Guard"] instance=ExtResource("1_0intx")]
 scale = Vector2(1, 1)
+collision_layer = 4
 script = ExtResource("2_qtsra")
 my_tuple_dict = {}
 speed = 50
@@ -144,7 +145,7 @@ position = Vector2(0.5, 4.5)
 texture = SubResource("AtlasTexture_3t1ui")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(0.5, 7)
+position = Vector2(0.75, 1)
 
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {

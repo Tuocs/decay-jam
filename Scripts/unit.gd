@@ -13,7 +13,6 @@ var target: Node2D
 func _ready() -> void:
 	map = get_node("/root/Level/GroundCanvasLayer/GroundTilemap")
 	mapSize = map.get_used_rect().size * map.tile_set.tile_size
-	print(mapSize)
 	add_new_target_node()
 	
 func _process(delta: float) -> void:
@@ -30,9 +29,7 @@ func set_new_target_pos(new_pos: Vector2):
 	if closestTilePos == Vector2i(-1, -1):
 		print("Invalid tile clicked!")
 		return
-		
-	if walking:
-		return
+	
 	walking = true
 	if !is_sibling_of(self, target):
 		get_parent().add_child(target)

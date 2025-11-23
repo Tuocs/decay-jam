@@ -6,16 +6,13 @@ var MenuScene
 var Level1
 var Level2
 var Level3
-var Level4
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MenuScene = preload("res://Levels/Menu.tscn")
 	Level1 = preload("res://Levels/TestLevel.tscn")
 	Level2 = preload("res://Levels/Level2.tscn")
-	Level3 = preload("res://Levels/TestLevel.tscn")
-	Level4 = preload("res://Levels/TestLevel.tscn")
+	Level3 = preload("res://Levels/Level3.tscn")
 	if fade_bar == null:
 		create_new_fade_bar()
 	reveal_scene()
@@ -33,8 +30,6 @@ func scene_transition(level_to_load: int):
 			get_tree().change_scene_to_packed(Level2)
 		3:
 			get_tree().change_scene_to_packed(Level3)
-		4:
-			get_tree().change_scene_to_packed(Level4)
 		_:
 			get_tree().change_scene_to_packed(MenuScene)
 	if fade_bar == null:

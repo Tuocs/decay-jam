@@ -11,9 +11,14 @@ func _ready() -> void:
 
 func RefreshZombies():
 	my_group_nodes = get_tree().get_nodes_in_group("Zombie")
+	var valid_zombies = get_tree().get_nodes_in_group("Zombie")
 	for node in my_group_nodes:
-		print("Node in group: ", node.name)
-	if my_group_nodes.size() == 0:
+		if node.is_queued_for_deletion():
+			valid_zombies.erase(node)
+			pass
+		else:
+			print("Node in group: ", node.name)
+	if valid_zombies.size() == 0:
 		$"../../UI/Camera2D/Level Lost UI".visible = true
 
 func _input(event):

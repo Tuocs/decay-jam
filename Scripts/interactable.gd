@@ -33,14 +33,16 @@ func on_close_range_enter(area: Area2D) -> void:
 		area.get_parent().navigationOverride = false
 
 func on_mouse_click(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.is_action_pressed("Select"):
+	if event is InputEventMouseButton and event.is_action_pressed("Select"):
+		if !used:
 			animator.play("used")
 			used = true
 			# Draw any guards close
 			for guard in inRange:
+				print(guard)
 				guard.navigationOverride = true
 				guard.set_new_target_pos(self.position)
+				print(guard.target.position == self.position)
 
 func on_mouse_hover() -> void:
 	if used:

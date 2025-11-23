@@ -10,14 +10,34 @@ var inLight: Array[Node2D]
 @export var damageRate = 0.05
 @export var damage = 1
 
+@export var isOn: bool = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	toggle_light(isOn)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	for entity in inLight:
-		if entity.health <= 0:
-			inLight.erase(entity)
-			entity.dead = true
-		else:
-			deal_damage(entity, delta)
+	if isOn:
+		for entity in inLight:
+			if entity.health <= 0:
+				inLight.erase(entity)
+				entity.dead = true
+			else:
+				deal_damage(entity, delta)
+				
+func toggle_light(active: bool):
+	isOn = active
+	# On
+	if isOn:
+		pointLight.show()
+		areaColl.set_deferred("monitoring", true)
+		areaColl.set_deferred("monitorable", true)
+	# Off
+	else:
+		pointLight.hide()
+		areaColl.set_deferred("monitoring", false)
+		areaColl.set_deferred("monitorable", false)
 	
 func deal_damage(entity: Node2D, delta: float) -> void:
 	entity.damageTimer += delta

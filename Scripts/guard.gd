@@ -40,7 +40,7 @@ func try_new_move():
 		if pathing_list_pos >= my_tuple_dict.size():
 			pathing_list_pos = 0
 		move_time = current_time + values_array[pathing_list_pos]
-		print(move_time)
+		#print(move_time)
 		set_new_target_pos(keys_array[pathing_list_pos].position)
 
 func direction_facing() -> void:

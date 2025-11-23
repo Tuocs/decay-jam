@@ -251,6 +251,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Level Lost UI" parent="UI/Camera2D" instance=ExtResource("4_xc3xs")]
 visible = false
+scale = Vector2(0.5, 0.5)
 
 [node name="LevelFinishZone" type="Area2D" parent="UI"]
 position = Vector2(143, 228)

@@ -45,17 +45,19 @@ func reload_scene():
 	reveal_scene()
 
 func reveal_scene():
+	var screen_size = get_viewport().size.x
 	if fade_bar == null:
 		create_new_fade_bar()
 	for i in range(100):
-		fade_bar.size.x = (100-i)*30
+		fade_bar.size.x = (100-i)*(screen_size/50)
 		await get_tree().process_frame 
 
 func hide_scene():
+	var screen_size = get_viewport().size.x
 	if fade_bar == null:
 		create_new_fade_bar()
 	for i in range(100):
-		fade_bar.size.x = i*30
+		fade_bar.size.x = i*(screen_size/50)
 		await get_tree().process_frame 
 		
 func create_new_fade_bar():
@@ -66,7 +68,7 @@ func create_new_fade_bar():
 	fade_bar_canvas.add_child(fade_bar)
 	fade_bar.set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	fade_bar.color = Color(0.024, 0.039, 0.024, 1.0)
-	fade_bar.size = Vector2(3000, 6000)
+	fade_bar.size = Vector2(10000, 6000)
 	fade_bar.position = Vector2(0, -2700)
 	fade_bar.rotation_degrees = 33
 	fade_bar.z_index = 4096
